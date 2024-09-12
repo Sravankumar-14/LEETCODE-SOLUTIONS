@@ -27,7 +27,7 @@ public:
         int count1 = calHeight(red,blue);
         int count2 = calHeight(blue,red);
 
-        cout<<count1;
+        // cout<<count1;
         return max(count1-1,count2-1);
     }
 };
