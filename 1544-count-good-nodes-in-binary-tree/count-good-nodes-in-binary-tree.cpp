@@ -11,41 +11,18 @@
  */
 class Solution {
 public:
-    void rec(TreeNode* root,stack<int>&s,int&c)
+    void rec(TreeNode* root, int maxValue, int & count)
     {
-        if(root==NULL)return ;
-
-        if(s.empty())
-        {
-            c++;
-            s.push(root->val);
-            rec(root->left,s,c);
-            rec(root->right,s,c);
-            s.pop();
-        }
-        else
-        {
-           if(s.top()<=root->val)
-           {
-            c++;
-             s.push(root->val);
-            rec(root->left,s,c);
-            rec(root->right,s,c);
-            s.pop();
-           }
-           else
-           {
-             rec(root->left,s,c);
-            rec(root->right,s,c);
-           }
-        }
+        if(root == NULL) return;
+        maxValue = max(maxValue,root->val);
+        rec(root->left,maxValue,count);
+        rec(root->right,maxValue,count);
+        if(root->val == maxValue) count++;
     }
     int goodNodes(TreeNode* root) {
-        
-        stack<int>s;
-        int c=0;
-        rec(root,s,c);
-        
-        return c;
+        int maxValue = INT_MIN;
+        int count = 0;
+        rec(root,maxValue,count);
+        return count;
     }
 };
