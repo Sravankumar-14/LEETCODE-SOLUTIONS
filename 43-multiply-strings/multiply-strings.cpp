@@ -45,7 +45,7 @@ public:
             c = sum / 10;
             str += (sum % 10 + '0');
         }
-        cout<<str;
+        // cout<<str;
         string t = to_string(c);
         reverse(t.begin(),t.end());
         str += t;
