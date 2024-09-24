@@ -22,17 +22,17 @@ public:
             row ++;
             n--;
         }
-        for(auto row : ans)
-        {
-            for(int i : row)
-            {
-                cout<<i<<" ";
-            }
-            cout<<"\n";
-        }
+        // for(auto row : ans)
+        // {
+        //     for(int i : row)
+        //     {
+        //         cout<<i<<" ";
+        //     }
+        //     cout<<"\n";
+        // }
         int c = 0;
         string str = "";
-        cout<<n<<"\n";
+        // cout<<n<<"\n";
         for(int i=temp-1; i>=0; i--)
         {
             int sum = 0;
@@ -41,10 +41,11 @@ public:
                 sum += ans[j][i];
             }
             sum += c;
-            cout<<sum<<" ";
+            // cout<<sum<<" ";
             c = sum / 10;
             str += (sum % 10 + '0');
         }
+        cout<<str;
         string t = to_string(c);
         reverse(t.begin(),t.end());
         str += t;
