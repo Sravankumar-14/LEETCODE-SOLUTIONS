@@ -21,9 +21,9 @@ public:
             start = start->next;
         }
         jump->next = head;
-        ListNode* temp = start->next;
+        head = start->next;
         start->next = NULL;
-        return temp;
+        return head;
     }
     ListNode* rotateRight(ListNode* head, int k) {
 
