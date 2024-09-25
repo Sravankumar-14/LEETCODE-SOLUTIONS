@@ -35,7 +35,7 @@ public:
             temp = temp->next;
             count++;
         }
-        if(k % count == 0) return head;
+        // if(k % count == 0) return head;
         return rotate(head,k % count);
     }
 };
