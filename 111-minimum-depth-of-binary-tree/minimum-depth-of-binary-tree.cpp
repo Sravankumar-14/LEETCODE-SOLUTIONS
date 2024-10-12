@@ -11,24 +11,17 @@
  */
 class Solution {
 public:
+    int mn = INT_MAX;
+    void findMin(TreeNode* root, int val)
+    {
+        if(root == NULL) return ;
+        if(!root->left && !root->right) mn = min(mn, val);
+        findMin(root->left,val+1);
+        findMin(root->right, val+1);
+    }
     int minDepth(TreeNode* root) {
         if(!root) return 0;
-        queue<TreeNode*>q;
-        int ans = 1;
-        q.push(root);
-        while(!q.empty())
-        {
-            int size = q.size();
-            for(int i=0; i<size; i++)
-            {
-                TreeNode* curr = q.front();
-                q.pop();
-                if(curr->left == NULL && curr->right == NULL) return ans;
-                if(curr->left) q.push(curr->left);
-                if(curr->right) q.push(curr->right);
-            }
-            ans++;
-        }
-        return 0;
+        findMin(root,1);
+        return mn;
     }
 };
