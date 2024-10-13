@@ -11,15 +11,35 @@
  */
 class Solution {
 public:
-    bool pathSum(TreeNode* root, int target, int sum)
-    {
+    bool hasPathSum(TreeNode* root, int target) {
         if(!root) return false;
-        sum += root->val;
-        if(root->left == nullptr and root->right == nullptr) return sum == target;
-        return (pathSum(root->left,target,sum) || (pathSum(root->right,target,sum)));
-    }
-    bool hasPathSum(TreeNode* root, int targetSum) {
-        if(!root) return false;
-        return pathSum(root,targetSum,0);
+        queue<TreeNode*>q1;
+        queue<int>q2;
+        q1.push(root);
+        q2.push(root->val);
+        // if(root->val == target) return true;
+        while(!q1.empty())
+        {
+            int size = q1.size();
+            for(int i=0; i<size; i++)
+            {
+                TreeNode* curr = q1.front();
+                int temp = q2.front();
+                q1.pop();
+                q2.pop();
+                if(!curr->left && !curr->right and temp == target) return true;
+                if(curr->left)
+                {
+                    q1.push(curr->left);
+                    q2.push(temp + curr->left->val);
+                } 
+                if(curr->right)
+                {
+                    q1.push(curr->right);
+                    q2.push(temp + curr->right->val);
+                }
+            }
+        }
+        return false;
     }
 };
