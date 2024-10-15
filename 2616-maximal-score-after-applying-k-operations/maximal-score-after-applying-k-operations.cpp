@@ -1,28 +1,21 @@
 class Solution {
 public:
-    long long ceil(long long x)
+    int divide(int num)
     {
-       if(x%3==0)return x/3;
-       return (x/3)+1;
+        if(num % 3 == 0) return num/3;
+        return num/3 + 1;
     }
     long long maxKelements(vector<int>& nums, int k) {
-        
         priority_queue<int>p;
-
-        for(int i:nums){
-            p.push(i);
+        for(int i : nums) p.push(i);
+        long long s = 0;
+        for(int i=0; i<k; i++)
+        {
+            s += p.top();
+            int x = divide(p.top());
+            p.pop();
+            p.push(x);
         }
-
-       long long s=0;
-       while(k--)
-       {
-        s=s+p.top();
-        long long x=ceil(p.top());
-        p.pop();
-        p.push(x);
-       }
-
-       return s;
-
+        return s;
     }
 };
