@@ -3,7 +3,7 @@ public:
     int divide(int num)
     {
         // if(num % 2 == 0) return num/2;
-        cout<<num/2<<" ";
+        // cout<<num/2<<" ";
         return num - num/2;
     }
     int minStoneSum(vector<int>& nums, int k) {
