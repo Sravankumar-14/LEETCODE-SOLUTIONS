@@ -44,8 +44,8 @@ public:
     }
 
     vector<int> sortArray(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        return nums;
+        // sort(nums.begin(),nums.end());
+        // return nums;
         int low = 0;
         int high = nums.size()-1;
         mergesort(nums,low,high);
