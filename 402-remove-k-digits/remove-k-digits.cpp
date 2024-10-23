@@ -18,7 +18,7 @@ public:
             st.push(s[i]); 
         }
         string str = "";
-        while(k>0)
+        while(!st.empty() && k>0)
         {
             k--;
             st.pop();
