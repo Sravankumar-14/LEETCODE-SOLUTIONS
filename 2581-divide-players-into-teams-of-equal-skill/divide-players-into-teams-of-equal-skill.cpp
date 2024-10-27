@@ -1,20 +1,33 @@
 class Solution {
 public:
     long long dividePlayers(vector<int>& skill) {
-        sort(skill.begin(), skill.end());
-        int a = 0;
-        int b = skill.size()-1;
-        int temp = skill[a] + skill[b];
-        long long ans = 0;
-        while(a < b)
+        int n = skill.size();
+        double totalSum = 0;
+        unordered_map<int,int>mp;
+        for(int i=0; i<n; i++)
         {
-            int t = skill[a] + skill[b];
-            if(t != temp) return -1;
-            int k = skill[a] * skill[b];
-            ans += k;
-            a++;
-            b--;
+            totalSum += skill[i];
+            mp[skill[i]] ++;
         }
-        return ans;
+        double temp = totalSum / (n / 2);
+        if(temp != floor(temp)) return -1;
+        // cout<<totalSum<<" "<<temp<<" ";
+        long long ans = 0;
+        for(int i=0; i<n; i++)
+        {
+            if(mp.find(temp - skill[i]) != mp.end())
+            {
+                if(mp[temp-skill[i]] > 0)
+                {
+                    int t = (temp - skill[i]) * skill[i];
+                    ans += t;
+                    mp[temp - skill[i]] --;
+                    // cout<<t<<" ";
+                }
+                else return -1;
+            }
+            else return -1;
+        }
+        return ans / 2;
     }
 };
