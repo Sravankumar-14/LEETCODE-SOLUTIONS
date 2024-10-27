@@ -10,7 +10,7 @@ public:
             mp[skill[i]] ++;
         }
         double temp = totalSum / (n / 2);
-        if(temp != floor(temp)) return -1;
+        // if(temp != floor(temp)) return -1;
         // cout<<totalSum<<" "<<temp<<" ";
         long long ans = 0;
         for(int i=0; i<n; i++)
