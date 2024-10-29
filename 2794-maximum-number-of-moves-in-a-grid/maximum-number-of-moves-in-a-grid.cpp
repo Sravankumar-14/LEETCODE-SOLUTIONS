@@ -8,7 +8,7 @@ public:
     }
     int rec(vector<vector<int>>& grid, int row, int col, unordered_map<string,int>& dp, int& rowSize, int & colSize,int prev)
     {
-        if(row < 0 || row >= rowSize || col >= colSize || col < 0) return 0;
+        if(row < 0 || row >= rowSize || col >= colSize) return 0;
         if(col != 0 && grid[row][col] <= prev) return 0;
         string str = to_string(row) +","+ to_string(col);
         if(dp.find(str) != dp.end()) return dp[str];
