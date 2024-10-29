@@ -2,7 +2,9 @@ class Solution {
 public:
     int maximum(int top, int middle, int bottom)
     {
-        return max(top,max(middle,bottom));
+        if(top >= middle && top >= bottom) return top;
+        if(middle >= top && middle >= bottom) return middle;
+        return bottom;
     }
     int rec(vector<vector<int>>& grid, int row, int col, unordered_map<string,int>& dp, int& rowSize, int & colSize,int prev)
     {
