@@ -1,25 +1,15 @@
 class Solution {
 public:
     string makeFancyString(string s) {
-        string str = "";
-        int fancy = 0;
-        str += s[0];
-        for(int i=1; i<s.length(); i++)
+        if(s.length() < 3) return s;
+        int j = 2;
+        for(int i=2; i<s.length(); i++)
         {
-            if(s[i] == s[i-1])
-            {
-                fancy ++;
-                if(fancy < 2) 
-                {
-                    str += s[i];
-                }
-            }
-            else
-            {
-                fancy = 0;
-                str += s[i];
+            if(s[i] != s[j-1]  || s[i] != s[j-2]){
+                s[j++] = s[i];
             }
         }
-        return str;
+        s.resize(j);
+        return s;
     }
 };
