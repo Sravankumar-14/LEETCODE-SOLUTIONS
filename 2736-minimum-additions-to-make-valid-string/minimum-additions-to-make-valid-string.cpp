@@ -18,7 +18,9 @@ public:
                 i++;
             }
         }
-        for(int k=0; (i++%3) != 0 ; k++) count++;
+        // for(int k=0; (i++%3) != 0 ; k++) count++;
+        if(i%3 == 0) return count;
+        count += (3 - (i%3));
         return count;
     }
 };
