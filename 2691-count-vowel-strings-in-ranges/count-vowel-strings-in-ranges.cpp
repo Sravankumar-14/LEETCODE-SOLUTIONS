@@ -2,7 +2,6 @@ class Solution {
 public:
     bool isVowel(char ch)
     {
-        ch = tolower(ch);
         return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
     }
     vector<int> vowelStrings(vector<string>& words, vector<vector<int>>& queries) {
