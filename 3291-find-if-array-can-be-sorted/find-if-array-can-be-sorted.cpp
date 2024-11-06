@@ -5,8 +5,8 @@ public:
         int count = 0;
         while(num)
         {
-            if(num%2 != 0) count++;
-            num /= 2;
+            if(num & 1 == 1) count++;
+            num = num >> 1;
         }
         return count;
     }
@@ -17,7 +17,7 @@ public:
         vector<int>setB(nums.size());
         for(int i=0; i<nums.size(); i++) {
             setB[i] = setBits(nums[i]);
-            cout<<setB[i]<<" ";
+            // cout<<setB[i]<<" ";
         }
         for(int i=1; i<nums.size(); i++)
         {
