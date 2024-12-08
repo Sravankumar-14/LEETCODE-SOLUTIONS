@@ -17,13 +17,13 @@ public:
     }
     long long sum(vector<int>& nums)
     {
-        long long sum ;
+        long long sum = 0LL;
         for(int i : nums) sum += i;
         return sum;
     }
     int shipWithinDays(vector<int>& weights, int days) {
         int left = *max_element(weights.begin(),weights.end());
-        long long right = accumulate(weights.begin(), weights.end(), 0LL);
+        long long right = sum(weights);
         int res = INT_MAX;
         while(left <= right)
         {
