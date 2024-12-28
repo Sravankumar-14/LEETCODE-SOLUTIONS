@@ -11,7 +11,7 @@ class Solution:
                 continue
             if nums[a] == val :
                 nums[a] , nums[b] = nums[b] , nums[a]
-            a += 1
-            b -= 1
+                a += 1
+                b -= 1
         return a
             
