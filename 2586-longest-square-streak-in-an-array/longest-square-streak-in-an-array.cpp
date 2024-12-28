@@ -21,7 +21,7 @@ public:
                     present *= present; 
                     
                 }
-                // else break;
+                else break;
             }
             maxLen = max(maxLen , len);
         }
