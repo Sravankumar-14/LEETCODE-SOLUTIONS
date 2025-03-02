@@ -1,31 +1,26 @@
 class Solution {
 public:
-    int findFib(vector<int>& arr, int a, int b, set<int>& st)
-    {
-        int len = 2;
-        int sum = a+b;
-        while(st.find(sum) != st.end())
-        {
-            len ++;
-            a = b;
-            b = sum;
-            sum = a+b;
-        }
-        return len>2?len:0;
-    }
-
     int lenLongestFibSubseq(vector<int>& arr) {
-        int maxLength = 0;
-        set<int>st;
-        for(int i : arr) st.insert(i);
-        for(int i=0; i<arr.size(); i++)
+        int n = arr.size();
+        int longest = 0;
+        vector<vector<int>>dp(n, vector<int>(n,0));
+        for(int sum=2; sum<n; sum++)
         {
-            for(int j=i+1; j<arr.size(); j++)
+            int a = 0;
+            int b = sum-1;
+            while(a < b)
             {
-                int length = findFib(arr,arr[i],arr[j],st);
-                maxLength = max(maxLength , length);
+                if(arr[a]+arr[b] < arr[sum]) a++;
+                else if(arr[a]+arr[b] > arr[sum]) b--;
+                else
+                {
+                    dp[b][sum] = 1 + dp[a][b];
+                    longest = max(longest , dp[b][sum]);
+                    a++;
+                    b--;
+                }
             }
         }
-        return maxLength;
+        return longest == 0 ? 0 : 2 + longest;
     }
 };
