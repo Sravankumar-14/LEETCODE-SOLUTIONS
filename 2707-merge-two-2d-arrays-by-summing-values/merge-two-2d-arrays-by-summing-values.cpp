@@ -1,19 +1,59 @@
 class Solution {
 public:
     vector<vector<int>> mergeArrays(vector<vector<int>>& nums1, vector<vector<int>>& nums2) {
-        map<int,int>mp;
-        for(vector<int> row : nums1)
-        {
-            mp[row[0]] += row[1];
-        }
-        for(vector<int>row : nums2)
-        {
-            mp[row[0]] += row[1];
-        }
+        int a = 0;
+        int b = 0;
+        int size1 = nums1.size();
+        int size2 = nums2.size();
         vector<vector<int>>result;
-        for(auto mapping : mp)
+        while(a < size1 && b < size2)
         {
-            result.push_back({mapping.first,mapping.second});
+            if(nums1[a][0] == nums2[b][0])
+            {
+                result.push_back(
+                    {
+                        nums1[a][0],nums1[a][1] + nums2[b][1]
+                    }
+                );
+                a++;
+                b++;
+            }
+            else if(nums1[a][0] > nums2[b][0])
+            {
+                result.push_back(
+                    {
+                        nums2[b][0] , nums2[b][1]
+                    }
+                );
+                b++;
+            }
+            else 
+            {
+                result.push_back(
+                    {
+                        nums1[a][0] , nums1[a][1]
+                    }
+                );
+                a++;
+            }
+        }
+        while(a < size1) 
+        {
+            result.push_back(
+                {
+                    nums1[a][0] , nums1[a][1]
+                }
+            );
+            a++;
+        }
+        while(b < size2)
+        {
+            result.push_back(
+                {
+                    nums2[b][0] , nums2[b][1]
+                }
+            );
+            b++;
         }
         return result;
     }
