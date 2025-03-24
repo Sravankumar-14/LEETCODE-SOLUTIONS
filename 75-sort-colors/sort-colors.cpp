@@ -1,17 +1,19 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        vector<int>ans;
+        int a = 0;
         for(int i=0; i<3; i++)
         {
-            for(int j=0; j<nums.size(); j++)
+            for(int j=a; j<nums.size(); j++)
             {
-                if(i == nums[j])
+                if(nums[j] == i)
                 {
-                    ans.push_back(i);
+                    swap(nums[j] , nums[a]);
+                    a++;
+                    // for(int num : nums) cout<<num<<" ";
+                    // cout<<endl;
                 }
             }
         }
-        nums = ans;
     }
 };
