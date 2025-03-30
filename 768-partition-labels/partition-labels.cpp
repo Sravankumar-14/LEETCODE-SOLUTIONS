@@ -7,7 +7,7 @@ public:
         {
             last[s[i]] = i;
         }
-        for(auto mp : last) cout<<mp.first<<"-"<<mp.second<<endl;
+        // for(auto mp : last) cout<<mp.first<<"-"<<mp.second<<endl;
         int it = 0;
         int windowSize = last[s[0]];
         int count = 0;
