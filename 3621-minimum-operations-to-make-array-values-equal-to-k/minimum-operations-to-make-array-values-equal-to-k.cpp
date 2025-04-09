@@ -4,16 +4,10 @@ public:
         set<int>st;
         for(int num : nums)
         {
+            if(num < k) return -1;
             st.insert(num);
         }
-        int size = st.size();
-        int count = 0;
-        for(int val : st)
-        {
-            if(val < k) return -1;
-            else if (val == k) return size - 1;
-            return size;
-        }
-        return 0;
+        if(st.find(k) != st.end()) return st.size()-1;
+        return st.size();
     }
 };
