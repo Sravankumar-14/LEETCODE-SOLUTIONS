@@ -7,9 +7,10 @@ public:
         {
             for(int j=i+1; j<n-1; j++)
             {
+                if(abs(arr[i] - arr[j]) > a) continue;
                 for(int k=j+1; k<n; k++)
                 {
-                    if(abs(arr[i] - arr[j]) <= a && abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c) ans++;
+                    if(abs(arr[j] - arr[k]) <= b && abs(arr[i] - arr[k]) <= c) ans++;
                 }
             }
         }
