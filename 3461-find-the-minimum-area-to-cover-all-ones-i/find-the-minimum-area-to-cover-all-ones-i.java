@@ -1,7 +1,7 @@
 class Solution {
     public int minimumArea(int[][] grid) {
-        int top = Integer.MAX_VALUE;
-        int left = Integer.MAX_VALUE;
+        int top = 1000;
+        int left = 1000;
         int right = 0;
         int bottom = 0;
         for(int i=0; i<grid.length; i++){
