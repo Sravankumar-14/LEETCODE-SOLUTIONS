@@ -1,13 +1,17 @@
 class Solution {
     public int minimumArea(int[][] grid) {
-        int top = 1000;
+        int top = 0;
+        boolean isTop = false;
         int left = 1000;
         int right = 0;
         int bottom = 0;
         for(int i=0; i<grid.length; i++){
             for(int j=0; j<grid[0].length; j++){
                 if(grid[i][j] == 1){
-                    top = Math.min(top, i);
+                    if(!isTop){
+                        top = i;
+                        isTop = true;
+                    }
                     left = Math.min(left, j);
                     right = Math.max(right, j);
                     bottom = Math.max(bottom, i);
