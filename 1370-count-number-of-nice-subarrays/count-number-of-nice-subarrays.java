@@ -7,7 +7,7 @@ class Solution {
         }
         list.add(nums.length);
 
-        for(int num : list) System.out.println(num);
+        // for(int num : list) System.out.println(num);
         int prev = 1;
         int it = k;
         int ans = 0;
