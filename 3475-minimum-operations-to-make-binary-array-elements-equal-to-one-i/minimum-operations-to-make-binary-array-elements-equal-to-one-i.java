@@ -10,9 +10,8 @@ class Solution {
             nums[index+2] ^= 1;
         }
 
-        for(int num : nums) {
-            if(num == 0) return -1;
-        }
+        int n = nums.length;
+        if(nums[n-2] == 0 || nums[n-1] == 0) return -1;  
         return ans;
     }
 }
