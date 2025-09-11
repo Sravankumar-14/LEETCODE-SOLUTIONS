@@ -1,35 +1,42 @@
 class Solution {
-    public void nextPermutation(int[] nums) {
-        int firstDigit = -1;
-        int n = nums.length;
-        int a = -1;
-        for(int i=n-2; i>=0; i--)
-        {
-            if(nums[i] < nums[i+1])
-            {
-                firstDigit = nums[i];
-                a = i;
-                break;
-            }
-        }
-        System.out.println(firstDigit);
-        if(firstDigit == -1) Arrays.sort(nums);
-        else
-        {
-            int b = -1;
-            int nextGreater = Integer.MAX_VALUE;
-            for(int i=a; i<n; i++)
-            {
-                if(nums[i] > firstDigit && nums[i] < nextGreater)
-                {
-                    nextGreater = nums[i];
-                    b = i;
-                }
-            }
-            System.out.println(nextGreater);
-            nums[a] = nums[a] + nums[b] - (nums[b] = nums[a]);
-            Arrays.sort(nums, a+1, n);
-        }
 
+    public int[] getNextMaximum(int[] nums, int index, int size) {
+        int [] ans = new int[2];
+        int presentMax = Integer.MAX_VALUE;
+        int value = nums[index];
+        int place = Integer.MAX_VALUE;
+        for(int i=index; i<size; i++) {
+            if(nums[i] > value && nums[i] < presentMax){
+                presentMax = nums[i];
+                place = i;
+            }
+        }
+        ans[0] = presentMax;
+        ans[1] = place;
+        return ans;
+    }
+
+    public void nextPermutation(int[] nums) {
+       boolean isTotalDesc = true;
+       int size = nums.length;
+
+       for(int i=size-1; i>=0; i--) {
+        int [] result = getNextMaximum(nums,i,size);
+        if(result[0] != Integer.MAX_VALUE) {
+            //swaping 
+            int temp = nums[i];
+            nums[i] = nums[result[1]];
+            nums[result[1]] = temp;
+            // for(int num : nums) System.out.println(num);
+            Arrays.sort(nums,i+1,size);
+            isTotalDesc = false;
+            break;
+        } //else{
+        //     System.out.println("no re");
+        // }
+       } 
+       if(isTotalDesc) {
+        Arrays.sort(nums);
+       }
     }
 }
