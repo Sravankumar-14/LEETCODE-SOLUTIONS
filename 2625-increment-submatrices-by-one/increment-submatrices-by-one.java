@@ -7,9 +7,13 @@ class Solution {
             int x = query[2];
             int y = query[3];
             for(int i=a; i<=x; i++) {
-                for(int j=b; j<=y; j++) {
-                    matrix[i][j] ++;
-                }
+                matrix[i][b] ++;
+                if(y < n-1) matrix[i][y+1] --;
+            }
+        }
+        for(int i=0; i<n; i++){
+            for(int j=1; j<n; j++){
+                matrix[i][j] += matrix[i][j-1];
             }
         }
         return matrix;
