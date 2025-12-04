@@ -5,22 +5,28 @@ class Solution {
         int rightMoving = 0;
         int stationary = 0;
 
-        boolean leftDir = true;
-        boolean rightDir = true;
-
         int size = directions.length();
-        for(int i=0; i<size; i++) {
-            if(directions.charAt(i) != 'L') break;
+        int a = 0;
+        int b = size-1;
+        for(; a<size; a++) {
+            if(directions.charAt(a) != 'L') break;
+            if(directions.charAt(a) == 'S') stationary ++;
             leftMoving ++;
         }
 
-        for(int i=size-1; i>=0; i--) {
-            if(directions.charAt(i) != 'R') break;
+        for(; b>=0; b--) {
+            if(directions.charAt(b) != 'R') break;
+            if(directions.charAt(b) == 'S') stationary ++;
             rightMoving ++;
         }
 
-        for(int i=0; i<size; i++) {
-            if(directions.charAt(i) == 'S') stationary ++;
+        for(; a<=b; a++, b--) {
+            if(a == b) {
+                if(directions.charAt(a) == 'S') stationary ++;
+                break;
+            }
+            if(directions.charAt(a) == 'S') stationary ++;
+            if(directions.charAt(b) == 'S') stationary ++;
         }
 
         return (size - leftMoving - rightMoving - stationary);
