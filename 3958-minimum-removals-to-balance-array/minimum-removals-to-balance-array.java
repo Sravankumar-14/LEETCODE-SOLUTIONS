@@ -6,7 +6,7 @@ class Solution {
 
         int j = 0;
         for(int i=0; i<n; i++) {
-            if(j < i) j = i;
+            // if(j < i) j = i;
             while(j < n && nums[j] <= (long)nums[i]*k) {
                 j++;
             }
