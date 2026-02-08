@@ -16,7 +16,7 @@
 class Solution {
     boolean isBalanced = true;
     int rec(TreeNode root) {
-        if(root == null) {
+        if(root == null || !isBalanced) {
             return 0;
         }
         int left = rec(root.left);
