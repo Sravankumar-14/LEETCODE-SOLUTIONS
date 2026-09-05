@@ -8,8 +8,8 @@ class Solution {
     }
 
     public boolean uniformArray(int[] nums1) {
-        Arrays.sort(nums1);
-        if(nums1[0] % 2 != 0) return true;
+        int min = Arrays.stream(nums1).min().getAsInt();
+        if(min % 2 != 0) return true;
         boolean anyOdds = anyOdds(nums1);
         return !anyOdds;
     }
